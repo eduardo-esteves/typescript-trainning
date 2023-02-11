@@ -1,6 +1,5 @@
-import { validForm } from "@modules/valid-form"
+import validForm from '@functions/valid-form'
 
-const input = "text";
-
-const result = validForm()[input]("")
+const data = '19/01/2023'
+const result = validForm().date(data, 'pt')
 console.log(result)
