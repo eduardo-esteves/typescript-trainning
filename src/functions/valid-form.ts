@@ -1,4 +1,7 @@
 interface validateFields {
+  isNull: (input: any) => boolean
+  isUndefined: (input: any) => boolean
+  notInitializeds: (inputs: any[]) => boolean
   email: (input: string) => boolean
   text: (input: string) => boolean
   date: (input: string, format?: string) => boolean
@@ -6,6 +9,42 @@ interface validateFields {
 
 const validForm = (): validateFields => {
   return {
+    /**
+     * Validate if the input informed is of type null
+     *
+     * @author Eduardo Esteves
+     *
+     * @param {any} input
+     *
+     * @return {boolean}
+     */
+    isNull (input: any): boolean {
+      return input === null
+    },
+    /**
+     * Validate if the input informed is of type undefined
+     *
+     * @author Eduardo Esteves
+     *
+     * @param {any} input
+     *
+     * @return {boolean}
+     */
+    isUndefined (input: any): boolean {
+      return typeof input === 'undefined'
+    },
+    /**
+     * Validate if the are some input who is not initialized
+     *
+     * @author Eduardo Esteves
+     *
+     * @param {any[]} inputs
+     *
+     * @return {boolean}
+     */
+    notInitializeds (inputs: any[]): boolean {
+      return inputs.some((valor) => valor === '' || this.isNull(valor) || this.isUndefined(valor))
+    },
     /**
      * Validate if the input informed is an email valid
      *
