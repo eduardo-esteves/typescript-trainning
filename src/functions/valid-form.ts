@@ -59,7 +59,7 @@ const validForm = (): validateFields => {
           }
 
           const date = `${dateBr[2]}-${dateBr[1]}-${dateBr[0]}`
-          const dateInfo = new Date(`${date} 00:00:00`)
+          const dateInfo = new Date(`${date} ${now.toLocaleTimeString()}`)
 
           if (dateInfo.getTime() > now.getTime()) {
             return false
@@ -69,7 +69,7 @@ const validForm = (): validateFields => {
         }
 
         default: {
-          const dateInfo = new Date(`${input} 00:00:00`)
+          const dateInfo = new Date(`${input} ${now.toLocaleTimeString()}`)
 
           if (dateInfo.getTime() > now.getTime()) {
             return false
