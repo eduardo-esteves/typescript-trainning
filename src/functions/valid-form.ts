@@ -71,10 +71,13 @@ const validForm = (): validateFields => {
      * @return {boolean}
      */
     text (input: string): boolean {
-      const filter = /^[\wà-ú]{2,}\s?.+$/i
-      const text = input.replace(/^\s+|\s+$/, '')
+      const num = Number(input)
+      const isString = !Number.isInteger(num)
 
-      return !!(filter.test(text))
+      const filter = /^[\wà-ú]{2,}\s?.+$/i
+      const text = input.toString().replace(/^\s+|\s+$/, '')
+
+      return isString && !!(filter.test(text))
     },
 
     /**
