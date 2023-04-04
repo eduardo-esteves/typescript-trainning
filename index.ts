@@ -1,5 +1,6 @@
-import validForm from '@functions/valid-form'
+import { bySalary } from '@functions/filters/filterPeople'
 
-const data = '19/01/2023'
-const result = validForm().date(data, 'pt')
+const result = bySalary(43000)
+
+/* eslint-disable */
 console.log(result)
