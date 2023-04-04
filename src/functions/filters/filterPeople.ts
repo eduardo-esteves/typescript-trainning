@@ -1,10 +1,14 @@
-import * as fs from 'fs'
-import * as path from 'path'
 import { Pessoa as People } from '../../interfaces/generalInterfaces'
+import loadPeople from '@functions/loadPeople'
 
-const peopleJson = fs.readFileSync(path.join(__dirname, '/../../people.json'), 'utf-8')
-const peoples: People[] = JSON.parse(peopleJson)
+const people: People[] = loadPeople()
 
+/**
+ * Filters the array of people by the given salary.
+ *
+ * @param salary a number.
+ * @returns A new array of people who have a salary greater than or equal to the salary parameter.
+ */
 export const bySalary = (salary: Number): People[] => {
-  return peoples.filter(people => people.salario >= salary)
+  return people.filter(peop => peop.salario >= salary)
 }
