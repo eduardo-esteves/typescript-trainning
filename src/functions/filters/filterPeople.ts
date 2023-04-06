@@ -30,3 +30,14 @@ export const tableEmployee = (): string[] => people.map(peop => (
       <td>${peop.idade}</td>
     </tr>`
 ))
+
+/**
+ * Filters a person by their CPF, regardless of whether it's formated or not.
+ *
+ * @param cpf a string representing the CPF to search for.
+ * @returns a People object if a match is found, otherwise undefined.
+ */
+export const byCpf = (cpf: string): People | undefined => {
+  const pattern = /[.-]/g
+  return people.find(peop => peop.cpf.replace(pattern, '') === cpf.replace(pattern, ''))
+}
